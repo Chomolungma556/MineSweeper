@@ -144,10 +144,15 @@ int main()
             cells[cursorX][cursorY].isOnFlag = !cells[cursorX][cursorY].isOnFlag;
             break;
         default:
+            // disable to remove mine. 
+            if (true == cells[cursorX][cursorY].isOnFlag)
+            {
+                break;
+            }
             cells[cursorX][cursorY].isHiddenByMine = false;
 
             // Judge Game Over. 
-            if (true == cells[cursorX][cursorX].isExistBomb)
+            if (true == cells[cursorX][cursorY].isExistBomb)
             {
                 isExplosion = true;
                 for (int y = 0; y < FIELD_HEIGHT; ++y)
